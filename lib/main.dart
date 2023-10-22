@@ -3,16 +3,28 @@ import 'package:dicoding_ditonton/common/utils.dart';
 import 'package:dicoding_ditonton/presentation/pages/about_page.dart';
 import 'package:dicoding_ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:dicoding_ditonton/presentation/pages/home_movie_page.dart';
+import 'package:dicoding_ditonton/presentation/pages/now_playing_tv_series_page.dart';
 import 'package:dicoding_ditonton/presentation/pages/popular_movies_page.dart';
+import 'package:dicoding_ditonton/presentation/pages/popular_tv_series_page.dart';
 import 'package:dicoding_ditonton/presentation/pages/search_page.dart';
+import 'package:dicoding_ditonton/presentation/pages/search_tv_series_page.dart';
 import 'package:dicoding_ditonton/presentation/pages/top_rated_movies_page.dart';
+import 'package:dicoding_ditonton/presentation/pages/top_rated_tv_series_page.dart';
+import 'package:dicoding_ditonton/presentation/pages/tv_series_detail_page.dart';
 import 'package:dicoding_ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:dicoding_ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:dicoding_ditonton/presentation/provider/movie_list_notifier.dart';
 import 'package:dicoding_ditonton/presentation/provider/movie_search_notifier.dart';
 import 'package:dicoding_ditonton/presentation/provider/popular_movies_notifier.dart';
+import 'package:dicoding_ditonton/presentation/provider/popular_tv_series_notifier.dart';
 import 'package:dicoding_ditonton/presentation/provider/top_rated_movies_notifier.dart';
+import 'package:dicoding_ditonton/presentation/provider/top_rated_tv_series_notifier.dart';
+import 'package:dicoding_ditonton/presentation/provider/tv_series_detail_notifier.dart';
+import 'package:dicoding_ditonton/presentation/provider/tv_series_list_notifier.dart';
+import 'package:dicoding_ditonton/presentation/provider/tv_series_now_playing_notifier.dart';
+import 'package:dicoding_ditonton/presentation/provider/tv_series_search_notifier.dart';
 import 'package:dicoding_ditonton/presentation/provider/watchlist_movie_notifier.dart';
+import 'package:dicoding_ditonton/presentation/provider/watchlist_tv_series_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -46,6 +58,27 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => di.locator<WatchlistMovieNotifier>(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TVSeriesListNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TVSeriesDetailNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TVSeriesNowPlayingNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<PopularTVSeriesNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TopRatedTVSeriesNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<TVSeriesSearchNotifier>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => di.locator<WatchlistTVSeriesNotifier>(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -77,14 +110,38 @@ class MyApp extends StatelessWidget {
               return MaterialPageRoute(builder: (_) => WatchlistMoviesPage());
             case AboutPage.ROUTE_NAME:
               return MaterialPageRoute(builder: (_) => AboutPage());
+            case TVSeriesDetailPage.ROUTE_NAME:
+              final id = settings.arguments as int;
+              return MaterialPageRoute(
+                builder: (_) => TVSeriesDetailPage(id: id),
+                settings: settings,
+              );
+            case NowPlayingTVSeriesPage.ROUTE_NAME:
+              return MaterialPageRoute(
+                builder: (_) => NowPlayingTVSeriesPage(),
+              );
+            case TopRatedTVSeriesPage.ROUTE_NAME:
+              return MaterialPageRoute(
+                builder: (_) => TopRatedTVSeriesPage(),
+              );
+            case PopularTVSeriesPage.ROUTE_NAME:
+              return MaterialPageRoute(
+                builder: (_) => PopularTVSeriesPage(),
+              );
+            case SearchTVSeriesPage.ROUTE_NAME:
+              return MaterialPageRoute(
+                builder: (_) => SearchTVSeriesPage(),
+              );
             default:
-              return MaterialPageRoute(builder: (_) {
-                return Scaffold(
-                  body: Center(
-                    child: Text('Page not found :('),
-                  ),
-                );
-              });
+              return MaterialPageRoute(
+                builder: (_) {
+                  return Scaffold(
+                    body: Center(
+                      child: Text('Page not found :('),
+                    ),
+                  );
+                },
+              );
           }
         },
       ),
