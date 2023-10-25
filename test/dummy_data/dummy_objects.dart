@@ -1,7 +1,9 @@
 import 'package:dicoding_ditonton/data/models/movie_table.dart';
+import 'package:dicoding_ditonton/data/models/tv_series_table.dart';
 import 'package:dicoding_ditonton/domain/entities/genre.dart';
 import 'package:dicoding_ditonton/domain/entities/movie.dart';
 import 'package:dicoding_ditonton/domain/entities/movie_detail.dart';
+import 'package:dicoding_ditonton/domain/entities/tv_series.dart';
 
 final testMovie = Movie(
   adult: false,
@@ -51,9 +53,52 @@ final testMovieTable = MovieTable(
   overview: 'overview',
 );
 
+final testTVSeriesTable = TVSeriesTable(
+  id: 1,
+  title: 'title',
+  posterPath: 'posterPath',
+  overview: 'overview',
+);
+
 final testMovieMap = {
   'id': 1,
   'overview': 'overview',
   'posterPath': 'posterPath',
   'title': 'title',
 };
+
+final testTVSeriesMap = {
+  'id': 1,
+  'overview': 'overview',
+  'posterPath': 'posterPath',
+  'title': 'title',
+};
+
+final testTVSeriesDetailMap = {
+  "poster_path": "posterPath",
+  "name": "title",
+  "genres": [
+    {"id": 1, "name": "name"}
+  ],
+  "overview": 'overview',
+  'vote_average': 1,
+  'vote_count': 1,
+  'id': 1,
+  "original_name": "original_name"
+};
+
+final testTVSeries = TVSeries(
+  firstAirDate: '2023-10-10',
+  genreIds: [1],
+  id: 1,
+  name: 'name',
+  originCountry: ['originCountry'],
+  originalLanguage: 'originalLanguage',
+  originalName: 'originalName',
+  overview: 'overview',
+  popularity: 1,
+  voteAverage: 1,
+  voteCount: 1,
+);
+
+final testTVSeriesList = [testTVSeries];

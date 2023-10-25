@@ -48,13 +48,14 @@ class TVSeriesDetailResponse extends Equatable {
           id: json['id']);
 
   Map<String, dynamic> toJson() => {
-        "posterPath": posterPath,
+        "poster_path": posterPath,
         "name": name,
-        "originalName": originalName,
+        "original_name": originalName,
         "genres": List<dynamic>.from(genres.map((x) => x.toJson())),
         "overview": overview,
-        "voteAverage": voteAverage,
-        "voteCount": voteCount
+        "vote_average": voteAverage,
+        "vote_count": voteCount,
+        "id": id,
       };
 
   TVSeriesDetail toEntity() {

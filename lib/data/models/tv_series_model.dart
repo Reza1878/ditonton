@@ -71,19 +71,19 @@ class TVSeriesModel extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-        "backdropPath": backdropPath,
-        "firstAirDate": firstAirDate,
-        "genreIds": genreIds,
+        "backdrop_path": backdropPath,
+        "first_air_date": firstAirDate,
+        "genre_ids": genreIds,
         "id": id,
         "name": name,
-        "originCountry": originCountry,
-        "originalLanguage": originalLanguage,
-        "originalName": originalName,
+        "origin_country": originCountry,
+        "original_language": originalLanguage,
+        "original_name": originalName,
         "overview": overview,
         "popularity": popularity,
-        "posterPath": posterPath,
-        "voteAverage": voteAverage,
-        "voteCount": voteCount,
+        "poster_path": posterPath,
+        "vote_average": voteAverage,
+        "vote_count": voteCount,
       };
 
   TVSeries toEntity() => TVSeries(

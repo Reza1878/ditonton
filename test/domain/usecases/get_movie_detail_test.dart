@@ -27,3 +27,5 @@ void main() {
     expect(result, Right(testMovieDetail));
   });
 }
+
+            
