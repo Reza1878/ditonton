@@ -47,7 +47,6 @@ void main() {
           );
 
           final result = await dataSource.getNowPlayingTVSeries();
-          print(result);
 
           expect(result, equals(tTVSeriesList));
         },
@@ -219,7 +218,7 @@ void main() {
       json.decode(
         readJson('dummy_data/tv_series_recommendations.json'),
       ),
-    );
+    ).seriesList;
 
     test(
       'should return tv series list when status code is 200',
