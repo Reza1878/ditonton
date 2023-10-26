@@ -200,7 +200,7 @@ class DetailContent extends StatelessWidget {
                                     child: ListView.builder(
                                       scrollDirection: Axis.horizontal,
                                       itemBuilder: (context, index) {
-                                        final movie = recommendations[index];
+                                        final curr = recommendations[index];
                                         return Padding(
                                           padding: const EdgeInsets.all(4.0),
                                           child: InkWell(
@@ -208,7 +208,7 @@ class DetailContent extends StatelessWidget {
                                               Navigator.pushReplacementNamed(
                                                 context,
                                                 TVSeriesDetailPage.ROUTE_NAME,
-                                                arguments: tvSeries.id,
+                                                arguments: curr.id,
                                               );
                                             },
                                             child: ClipRRect(
@@ -217,7 +217,7 @@ class DetailContent extends StatelessWidget {
                                               ),
                                               child: CachedNetworkImage(
                                                 imageUrl:
-                                                    'https://image.tmdb.org/t/p/w500${movie.posterPath}',
+                                                    'https://image.tmdb.org/t/p/w500${curr.posterPath}',
                                                 placeholder: (context, url) =>
                                                     Center(
                                                   child:
